@@ -1,0 +1,48 @@
+<div class='container' ng-controller="HomeCtrl">
+  
+  <div class='row'>
+    <h1>{{ title }}</h1>
+  </div>
+  <div class='row'>
+    <div class='col-xs-8'>
+      <label>Search for tweets by Hashtag:
+        <input type="text" name="input" ng-model="query.text" required ng-trim="false">
+      </label>
+    </div>
+    <div class='col-xs-4'>
+      <button ng-click='onClickSearch()'>Search</button>
+    </div>
+  </div>
+
+  <div ng-show='searched'>
+    <div class='row'>
+      <h3>Current Search Result</h3>
+    </div>
+    <ul>
+      <li></li>
+    </ul>
+    <div class='row' ng-repeat='tweet in tweets'>
+      <p class='col-xs-12'><a href="{{ tweet.url }}" target="_blank">@{{ tweet.screen_name }}</a> said that... "<span>{{ tweet.text }}</span>" so far its been likes <strong>{{ tweet.favorite_count }}</strong> times and retweeted <strong>{{ tweet.retweet_count }}</strong></p>
+    </div>
+  </div>
+ 
+
+  <div class='row'>
+    <h2>Our great past searches</h2>
+  </div>
+
+  <div ng-repeat='search in searches'>
+    <div class='row'>
+      <a ng-click="onClickSearchedItem(search)"><h3>#{{ search.query }}</h3></a>
+    </div>
+    <div ng-show='search.tweets' class='row'>
+      <div ng-show="search.tweets.length > 0" ng-repeat='tweet in search.tweets'>
+        <p class='col-xs-12'><a href="{{ tweet.url }}" target="_blank">@{{ tweet.screen_name }}</a> said that... "<span>{{ tweet.text }}</span>" so far its been likes <strong>{{ tweet.favorite_count }}</strong> times and retweeted <strong>{{ tweet.retweet_count }}</strong></p>
+      </div>
+      <div ng-show="search.tweets === []">
+        <p>Their were no really good tweets sorry.</p>
+      </div>
+    </div>
+  </div>
+
+</div>

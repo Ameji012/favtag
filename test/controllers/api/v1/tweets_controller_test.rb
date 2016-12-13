@@ -3,13 +3,9 @@ module Api
   module V1
 
     class TweetsControllerTest < ActionController::TestCase
-      test "should return object list of tweets" do
-        get :index
-        assert_response :success
-      end
 
-      test "should return object list of tweets based on the provided hashtag" do
-        post :search, params: { hashtag: 'trump' }
+      test "should return a list of tweets based on the provided hashtag" do
+        post :search, { hashtag: 'trump' }
         assert_response :success
       end
     end

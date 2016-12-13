@@ -5,6 +5,7 @@ gem 'rails', '4.2.3'
 gem 'pg'
 
 # Layout
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
@@ -22,6 +23,8 @@ group :development, :test do
   gem 'byebug'
   gem 'spring'
   gem 'dotenv-rails'
+  gem 'awesome_print'
+  gem 'pry'
 end
 
 group :development do
