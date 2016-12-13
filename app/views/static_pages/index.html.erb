@@ -4,25 +4,25 @@
     <h1>{{ title }}</h1>
   </div>
   <div class='row'>
-    <div class='col-xs-8'>
+    <form>
       <label>Search for tweets by Hashtag:
         <input type="text" name="input" ng-model="query.text" required ng-trim="false">
       </label>
-    </div>
-    <div class='col-xs-4'>
-      <button ng-click='onClickSearch()'>Search</button>
-    </div>
+      <button type='submit' ng-click='onClickSearch()'>Search</button>
+    </form>
   </div>
 
   <div ng-show='searched'>
-    <div class='row'>
-      <h3>Current Search Result</h3>
+    <div class='row' ng-show="tweets.length == 0">
+      <p>Sorry #{{ query.text }} is not a popular Hashtag, try another one like 911, Clinton, Trump...etc</p>
     </div>
-    <ul>
-      <li></li>
-    </ul>
-    <div class='row' ng-repeat='tweet in tweets'>
-      <p class='col-xs-12'><a href="{{ tweet.url }}" target="_blank">@{{ tweet.screen_name }}</a> said that... "<span>{{ tweet.text }}</span>" so far its been likes <strong>{{ tweet.favorite_count }}</strong> times and retweeted <strong>{{ tweet.retweet_count }}</strong></p>
+    <div ng-hide="tweets.length == 0">
+      <div class='row' >
+        <h3>#{{ query.text }} Search Result</h3>
+      </div>
+      <div class='row' ng-repeat='tweet in tweets'>
+        <p class='col-xs-12'><a href="{{ tweet.url }}" target="_blank">@{{ tweet.screen_name }}</a> said that... "<span>{{ tweet.text }}</span>" so far its been liked <strong>{{ tweet.favorite_count }}</strong> times and retweeted <strong>{{ tweet.retweet_count }}</strong></p>
+      </div>
     </div>
   </div>
  
@@ -37,7 +37,7 @@
     </div>
     <div ng-show='search.tweets' class='row'>
       <div ng-show="search.tweets.length > 0" ng-repeat='tweet in search.tweets'>
-        <p class='col-xs-12'><a href="{{ tweet.url }}" target="_blank">@{{ tweet.screen_name }}</a> said that... "<span>{{ tweet.text }}</span>" so far its been likes <strong>{{ tweet.favorite_count }}</strong> times and retweeted <strong>{{ tweet.retweet_count }}</strong></p>
+        <p class='col-xs-12'><a href="{{ tweet.url }}" target="_blank">@{{ tweet.screen_name }}</a> said that... "<span>{{ tweet.text }}</span>" so far its been liked <strong>{{ tweet.favorite_count }}</strong> times and retweeted <strong>{{ tweet.retweet_count }}</strong></p>
       </div>
       <div ng-show="search.tweets === []">
         <p>Their were no really good tweets sorry.</p>
