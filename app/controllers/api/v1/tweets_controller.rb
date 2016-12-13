@@ -9,7 +9,6 @@ module Api
           return render(status: :bad_request, json: nil)
         end
         search = Search.create(query: params['hashtag'])
-        ap search.query
         @client.search('#' + search.query, result_type: "popular").sort_by(&:favorite_count).reverse.take(5).collect.each do |tweet|
           t = Tweet.create(
             search_id: search.id,
@@ -19,7 +18,6 @@ module Api
             favorite_count: tweet.favorite_count,
             url: tweet.url
             )
-          ap t
         end
 
         return render(status: :ok, json: search.tweets)
