@@ -4,6 +4,9 @@ gem 'rails', '4.2.3'
 # Database
 gem 'pg'
 
+# Engines
+gem 'puma'
+
 # Layout
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
