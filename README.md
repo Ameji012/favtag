@@ -20,5 +20,5 @@ rails s
 
 ## How to run Tests
 ```
-rake tests
+rake test
 ```
