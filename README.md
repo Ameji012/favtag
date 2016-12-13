@@ -17,3 +17,8 @@ ex. this project is usting DOTENV to save enviroment variables view favtag/sampl
 rake db:create && rake db:migrate
 rails s
 ```
+
+## How to run Tests
+```
+rake tests
+```
